@@ -1,4 +1,4 @@
-package com.company;
+package Configurator;
 
 public class Main {
 
