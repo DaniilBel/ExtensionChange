@@ -6,8 +6,8 @@ public class DirTemplate {
     private final int N = 3;
 
     public void createTemplate() throws IOException {
-        File dir1 = new File("a");
-        File dir2 = new File("b");
+        File dir1 = new File("test/a");
+        File dir2 = new File("test/b");
 
         if(!dir1.exists()){
             dir1.mkdir();
@@ -25,7 +25,7 @@ public class DirTemplate {
         for (int i = 1; i <= N; ++i){
 
             stringBuilderJava.replace(0, 1, String.valueOf(i));
-            file = new File(stringBuilderJava.toString());
+            file = new File("test/" + stringBuilderJava.toString());
             if(!file.exists()){
                 file.createNewFile();
             }
@@ -38,7 +38,7 @@ public class DirTemplate {
         for (int i = 1; i <= N; ++i){
 
             stringBuilderKt.replace(0, 1, String.valueOf(i));
-            file = new File(stringBuilderKt.toString());
+            file = new File("test/" + stringBuilderKt.toString());
             if(!file.exists()){
                 file.createNewFile();
             }
@@ -46,8 +46,8 @@ public class DirTemplate {
     }
 
     public void deleteTemplate() throws IOException{
-        File dir1 = new File("a");
-        File dir2 = new File("b");
+        File dir1 = new File("test/a");
+        File dir2 = new File("test/b");
         if(dir1.exists()) {
             dir1.delete();
             System.out.println("Удалена 1 директория");
@@ -64,7 +64,7 @@ public class DirTemplate {
         for (int i = 1; i <= N; ++i){
 
             stringBuilderJava.replace(0, 1, String.valueOf(i));
-            file = new File(stringBuilderJava.toString());
+            file = new File("test/" + stringBuilderJava.toString());
             if(file.exists()){
                 file.delete();
             }
@@ -76,7 +76,7 @@ public class DirTemplate {
         for (int i = 1; i <= N; ++i){
 
             stringBuilderKt.replace(0, 1, String.valueOf(i));
-            file = new File(stringBuilderKt.toString());
+            file = new File("test/" + stringBuilderKt.toString());
             if(file.exists()){
                 file.delete();
             }
