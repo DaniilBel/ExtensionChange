@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ExtensionChange:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ExtensionChange_jar</output-path>
+    <root id="archive" name="ExtensionChange.jar">
+      <element id="module-output" name="ExtensionChange" />
+    </root>
+  </artifact>
+</component>
