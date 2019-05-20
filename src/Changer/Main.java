@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    static boolean ensureDirectoryExists(Path path) throws IOException{
+    //Проверяем существование пути
+    private static boolean directoryExist(Path path) throws IOException{
         if(Files.isDirectory(path)){
             path.getFileSystem().provider().checkAccess(path.toRealPath(), AccessMode.READ);
             return false;
@@ -18,26 +19,24 @@ public class Main {
 
     public static void main(String[] args) throws IOException{
 
-        Path path = null;
+        Path path;
         String directory;
         Scanner in = new Scanner(System.in);
 
         //проверяем существование введённого пути
         do {
-            //просим ввести путь
-            System.out.println("Введите абсолютный путь: ");
+            System.out.println("Enter the absolute path to the folder ");
             directory = in.nextLine();
             path = Paths.get(directory);
 
-        } while(ensureDirectoryExists(path));
+        } while(directoryExist(path));
         in.close();
 
         //указываем, с какой директорией должна проводиться вся работа
-
         Changer changer = new Changer();
         File dir = new File(directory);
         changer.fetchChild(dir);
 
-        //File dir = new File("c:/javaSaves/ExtensionChange/test");
+        changer.printNumOfRenamedFiles();
     }
 }

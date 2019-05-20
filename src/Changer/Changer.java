@@ -4,7 +4,16 @@ import java.io.*;
 
 public class Changer {
 
-    public void findFiles(File file, String extension){
+    private int numOfRenamedFiles = 0;
+
+    public void printNumOfRenamedFiles(){
+        if(numOfRenamedFiles == 0)
+            System.out.println("Files not found");
+        else
+            System.out.println("Files renamed: " + numOfRenamedFiles);
+    }
+
+    private void findFiles(File file, String extension){
         //вносим в список все файлы с расширением .java/.kt в данной директории
         File[] files = file.listFiles(pathname -> {
             if (!pathname.isFile())
@@ -16,10 +25,11 @@ public class Changer {
             return false;
         });
 
+        assert files != null;
         renameFile(files);
     }
 
-    public void renameFile(File[] files){
+    private void renameFile(File[] files){
         //переименование всех фалов с расширением .java/.kt
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -31,7 +41,8 @@ public class Changer {
             File newFile = new File(stringBuilder.toString());
 
             if(files[i].renameTo(newFile)){
-                System.out.println("Файл " + files[i] + " переименован в " + files[i].getName() + ".2019");
+                System.out.println("File " + files[i] + " renamed in " + files[i].getName() + ".2019");
+                ++numOfRenamedFiles;
             }
             stringBuilder.delete(0, stringBuilder.length());
         }
@@ -46,6 +57,7 @@ public class Changer {
             findFiles(file, ".java");
             findFiles(file, ".kt");
 
+            assert children != null;
             for (File child : children){
                 this.fetchChild(child);
             }
