@@ -33,7 +33,6 @@ public class Main {
             System.out.println("Enter the absolute path to the folder or press enter to change the files");
             directory = in.nextLine();
 
-            //if(directory.equals(Integer.toString(KeyEvent.VK_ENTER))){
             if(directory.equals("")){
                 path = Paths.get(curDir.toString());
             } else {
